@@ -1,14 +1,14 @@
 {
   "name": "verified-agent-identity",
   "version": "1.0.0",
-  "description": "Verified Agent Identity",
+  "description": "Billions Verified Agent Identity",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "@0xpolygonid/js-sdk": "^1.16.0",
     "@iden3/js-iden3-core": "^1.0.0",
     "@iden3/js-iden3-auth": "^1.0.0",
-    "ethers": "^6.0.0",
+    "ethers": "^6.10.0",
     "shell-quote": "^1.8.1",
     "uuid": "^9.0.0"
   }
