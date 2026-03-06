@@ -1,0 +1,28 @@
+name: Verify Agent Identity
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Verified Agent Identity
+        run: |
+          npm install
+          npx clawhub@latest install verified-agent-identity
+
+      - name: Create Identity
+        run: node scripts/createNewEthereumIdentity.js
+
+      - name: Generate Verification Link
+        run: node scripts/manualLinkHumanToAgent.js --challenge '{"name":"Saputra888","description":"verified agent"}'
