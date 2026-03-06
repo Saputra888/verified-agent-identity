@@ -1,7 +1,9 @@
 {
   "name": "verified-agent-identity",
   "version": "1.0.0",
-  "description": "Verified Agent Identity",
+  "description": "",
   "main": "index.js",
-  "license": "MIT"
+  "scripts": {
+    "start": "node index.js"
+  }
 }
