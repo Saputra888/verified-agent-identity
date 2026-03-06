@@ -32,3 +32,11 @@ steps:
   - name: Generate Verification Link
     run: node scripts/manualLinkHumanToAgent.js --challenge '{"name":"Saputra888","description":"verified agent"}'
 ```
+name: Verify Agent Identity
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
