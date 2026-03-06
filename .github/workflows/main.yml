@@ -1,8 +1,16 @@
-name: Verify Agent
+name: Verify Human Identity
 
 on:
-  push:
-    branches: [ develop ]
+  workflow_dispatch:
+    inputs:
+      agent_name:
+        description: 'saputra888'
+        required: true
+        default: 'saputra888'
+      agent_description:
+        description: 'saputra888 agent'
+        required: true
+        default: 'saputra888 AI Agent'
 
 jobs:
   verify:
@@ -12,14 +20,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '20'
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install ClawHub skill
+        run: npx clawhub@latest install verified-agent-identity
 
-      - name: Run verification
-        run: node scripts/verify.js
-        agent"}'
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm install
+
+      - name: Create new Ethereum Identity
+        run: node scripts/createNewEthereumIdentity.js
+
+      - name: Link Human to Agent
+        run: |
+          node scripts/manualLinkHumanToAgent.js --challenge '{"name":"saputra888","description":"saputra888 AI Agent"}'
